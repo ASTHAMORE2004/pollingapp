@@ -1,12 +1,12 @@
-# 🗳️ Real-Time Poll Rooms
+# Real-Time Poll Rooms
 
 A full-stack web application for creating polls, sharing them via links, and collecting votes with **real-time result updates** for all viewers.
 
-**🌐 Live Demo:** [https://quick-poll-jam.lovable.app](https://quick-poll-jam.lovable.app)
+** Live Demo:** https://pollingapp-roan.vercel.app/
 
 ---
 
-## ✨ Features
+## Features
 
 ### Core
 - **Poll Creation** — Create a poll with a question and 2–10 options
@@ -29,7 +29,7 @@ A full-stack web application for creating polls, sharing them via links, and col
 
 ---
 
-## 🛡️ Fairness & Anti-Abuse Mechanisms
+## Fairness & Anti-Abuse Mechanisms
 
 ### Mechanism 1: Browser Fingerprinting
 - Generates a **SHA-256 hash** from multiple browser attributes:
@@ -49,7 +49,7 @@ A full-stack web application for creating polls, sharing them via links, and col
 
 ---
 
-## 🧩 Edge Cases Handled
+## Edge Cases Handled
 
 | Edge Case | How It's Handled |
 |---|---|
@@ -66,7 +66,7 @@ A full-stack web application for creating polls, sharing them via links, and col
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -78,7 +78,7 @@ A full-stack web application for creating polls, sharing them via links, and col
 
 ---
 
-## 📐 Architecture
+## Architecture
 
 ```
 ┌─────────────┐       WebSocket        ┌──────────────────┐
@@ -97,15 +97,9 @@ A full-stack web application for creating polls, sharing them via links, and col
 - **`votes`** — `id`, `poll_id`, `option_id`, `voter_fingerprint`, `voter_ip`, `created_at`
   - `UNIQUE(poll_id, voter_fingerprint)` constraint
 
-### Security
-- **Row-Level Security (RLS)** enabled on all tables
-- Public read access for polls, options, and votes
-- Insert-only for votes (no update/delete by voters)
-- Creator-based update/delete for polls and options (matched by fingerprint)
 
----
 
-## 🚀 Getting Started
+## Getting Started
 
 ```bash
 # Clone the repository
@@ -123,25 +117,4 @@ npm run dev
 
 ---
 
-## 📋 Known Limitations & Future Improvements
 
-### Known Limitations
-- **No user authentication** — Creator identity is tied to browser fingerprint, not accounts. Clearing browser data loses creator privileges
-- **Fingerprint accuracy** — Browser fingerprints can change with updates or settings changes; not 100% reliable for identity
-- **No rate limiting** — Server-side rate limiting for API calls is not implemented
-- **No poll expiration by time** — Polls can only be closed manually or via max vote threshold
-
-### Potential Improvements
-- Add optional password-protected private polls
-- Implement time-based poll expiration (auto-close after X hours)
-- Add IP-based rate limiting via edge functions
-- User authentication for persistent creator identity
-- Poll templates and categories
-- Export results as CSV
-- Pie chart and additional visualization options
-
----
-
-## 📄 License
-
-MIT
